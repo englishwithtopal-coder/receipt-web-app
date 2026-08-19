@@ -1,0 +1,23 @@
+body {
+    font-family: Tahoma, sans-serif;
+    background: #f4f0ff;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+button {
+    padding: 10px;
+    background: #5033cc;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+}
