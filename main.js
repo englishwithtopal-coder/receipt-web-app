@@ -1,1 +1,0 @@
-let n=0;function addRow(){n++;let r=document.getElementById('items').insertRow();r.innerHTML='<td>'+n+'</td><td><input></td><td><input onkeydown="if(event.key==\'Enter\'){addRow()}"></td><td>0</td>'}addRow();
