@@ -1,23 +1,132 @@
-body {
-    font-family: Tahoma, sans-serif;
-    background: #f4f0ff;
-    padding: 20px;
+body{
+
+font-family:Tahoma;
+background:#eeeeee;
+padding:20px;
+
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+
+
+.app{
+
+display:flex;
+gap:20px;
+
 }
 
-td, th {
-    border: 1px solid #ccc;
-    padding: 8px;
+
+
+.input-panel{
+
+width:50%;
+
 }
 
-button {
-    padding: 10px;
-    background: #5033cc;
-    color: white;
-    border: 0;
-    border-radius: 8px;
+
+
+.preview{
+
+width:50%;
+
+}
+
+
+
+.box,
+.paper{
+
+background:white;
+padding:20px;
+border-radius:10px;
+
+}
+
+
+
+.paper{
+
+width:210mm;
+min-height:297mm;
+
+}
+
+
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+
+
+th{
+
+background:#202080;
+color:white;
+
+}
+
+
+
+td,th{
+
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+
+}
+
+
+
+input{
+
+width:90%;
+padding:6px;
+
+}
+
+
+
+.total{
+
+display:flex;
+justify-content:space-between;
+
+}
+
+
+
+.qr{
+
+width:220px;
+display:block;
+margin:auto;
+
+}
+
+
+
+.bank{
+
+text-align:center;
+
+}
+
+
+
+hr{
+
+border-top:1px dashed #999;
+
+}
+
+
+
+@page{
+
+size:A4 portrait;
+
 }
