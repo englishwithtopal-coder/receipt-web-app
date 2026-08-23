@@ -16,12 +16,18 @@ function addRow(){
 
     row.innerHTML = `
     <td>${count}</td>
-    <td><input></td>
+
+    <td>
+        <input class="item"
+        onkeydown="goFormula(event,this)">
+    </td>
+
     <td>
         <input class="formula"
         oninput="updateTotal()"
-        onkeydown="enterNext(event)">
+        onkeydown="enterNext(event,this)">
     </td>
+
     <td class="result">0</td>
     `;
 }
@@ -47,13 +53,34 @@ function updateTotal(){
 }
 
 
-function enterNext(event){
+function enterNext(event,input){
 
     if(event.key === "Enter"){
+
         event.preventDefault();
+
         addRow();
+
+        document
+        .querySelector("#items tr:last-child .item")
+        .focus();
+
     }
 
 }
+function goFormula(event,input){
 
+    if(event.key === "Enter"){
+
+        event.preventDefault();
+
+        input
+        .parentElement
+        .nextElementSibling
+        .querySelector("input")
+        .focus();
+
+    }
+
+}
 addRow();
