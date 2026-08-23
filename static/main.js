@@ -236,8 +236,43 @@ document
 
 }
 
+function saveBill(){
+
+let bill = {
+
+inv: document.getElementById("inv").value,
+
+date: document.getElementById("date").value,
+
+customer: document.getElementById("customer").value,
+
+total: document.getElementById("total").innerText
+
+};
 
 
+fetch("/save_bill",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(bill)
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+alert("บันทึกบิลเรียบร้อย");
+
+});
+
+
+}
 
 
 addRow();
