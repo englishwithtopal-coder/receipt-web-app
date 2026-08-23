@@ -1,1 +1,211 @@
-<!doctype html><html lang='th'><head><meta charset='utf-8'><title>Receipt Generator</title><link rel='stylesheet' href='/static/style.css'></head><body><h1>🧾 เครื่องสร้างบิล / ใบเสร็จ</h1><input placeholder='ชื่อลูกค้า'><table id='items'><tr><th>ลำดับ</th><th>รายการ</th><th>วิธีคำนวณ</th><th>รวม</th></tr></table><button onclick='addRow()'>+ เพิ่มรายการ</button><h2>ยอดสุทธิ <span id='total'>0</span> บาท</h2><img src='/assets/qrcode.jpeg' width='220'><p>ธนาคาร: ไทยพาณิชย์</p><p>ชื่อบัญชี: นางสาวประภัสสร ประโพศรี</p><p>เลขบัญชี: 422-103987-8</p><h3>โอนเงินแล้วกรุณาแจ้งสลิปการโอนเงิน</h3><h3>ขอบคุณที่อุดหนุนค่ะ</h3><script src='/static/main.js'></script></body></html>
+<!doctype html>
+<html lang="th">
+
+<head>
+<meta charset="utf-8">
+<title>Receipt V8.4 Professional</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- ฝั่งกรอกข้อมูล -->
+
+<div class="input-panel">
+
+<h1>🧾 เครื่องสร้างบิล / ใบเสร็จ V8.4</h1>
+
+
+<div class="box">
+
+<label>เลขที่บิล</label>
+<input id="inv" readonly>
+
+
+<label>วันที่</label>
+<input id="date" readonly>
+
+
+<label>ชื่อลูกค้า</label>
+<input id="customer"
+placeholder="กรอกชื่อลูกค้า"
+oninput="updatePreview()">
+
+</div>
+
+
+
+<div class="box">
+
+<h2>รายการสินค้า</h2>
+
+
+<table id="items">
+
+<tr>
+<th>ลำดับ</th>
+<th>รายการ</th>
+<th>วิธีคำนวณ</th>
+<th>รวม</th>
+</tr>
+
+
+</table>
+
+
+<button onclick="addRow()">
++ เพิ่มรายการ
+</button>
+
+
+</div>
+
+
+
+<h2>
+ยอดสุทธิ :
+<span id="total">0</span> บาท
+</h2>
+
+
+</div>
+
+
+
+
+
+<!-- Preview -->
+
+<div class="preview">
+
+
+<div class="paper">
+
+
+<h1>
+ใบเสร็จรับเงิน / ใบแจ้งชำระเงิน
+</h1>
+
+
+<div class="head">
+
+<p>
+เลขที่บิล : <span id="p_inv"></span>
+</p>
+
+<p>
+วันที่ : <span id="p_date"></span>
+</p>
+
+
+<p>
+ชื่อ : <span id="p_customer"></span>
+</p>
+
+
+</div>
+
+
+<hr>
+
+
+
+<table id="previewTable">
+
+<tr>
+
+<th>ลำดับ</th>
+<th>รายการ</th>
+<th>วิธีคำนวณ</th>
+<th>รวม</th>
+
+</tr>
+
+</table>
+
+
+
+<hr>
+
+
+<h2 class="total">
+
+ยอดสุทธิ
+
+<span>
+<span id="p_total">0</span> บาท
+</span>
+
+</h2>
+
+
+
+<hr>
+
+
+<h3>
+ช่องทางการชำระเงิน
+</h3>
+
+
+
+<img src="/assets/qrcode.jpeg"
+class="qr">
+
+
+
+<div class="bank">
+
+
+<p>ธนาคาร</p>
+<h3>ไทยพาณิชย์</h3>
+
+
+<p>ชื่อบัญชี</p>
+<h3>
+นางสาวประภัสสร ประโพศรี
+</h3>
+
+
+<p>เลขบัญชี</p>
+<h3>
+422-103987-8
+</h3>
+
+
+</div>
+
+
+<hr>
+
+
+<h3>
+** ขอบคุณที่ไว้วางใจอุดหนุนค่ะ **
+</h3>
+
+<h3>
+** โอนแล้วกรุณาแจ้งสลิปด้วยนะคะ **
+</h3>
+
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<script src="/static/main.js"></script>
+
+
+</body>
+
+</html>
