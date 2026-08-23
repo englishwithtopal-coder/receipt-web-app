@@ -8,6 +8,7 @@ function calculateFormula(value){
 }
 
 function addRow(){
+
     count++;
 
     let table = document.getElementById("items");
@@ -17,16 +18,11 @@ function addRow(){
     <td>${count}</td>
     <td><input></td>
     <td>
-        <input class="formula" 
+        <input class="formula"
         oninput="updateTotal()"
         onkeydown="enterNext(event)">
     </td>
-    <tr>
-<th>ลำดับ</th>
-<th>รายการ</th>
-<th>วิธีคำนวณ</th>
-<th>รวม</th>
-</tr>
+    <td class="result">0</td>
     `;
 }
 
