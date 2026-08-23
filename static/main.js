@@ -1,86 +1,243 @@
 let count = 0;
 
-function calculateFormula(value){
-    return value
-        .split(/[+*xX]/)
-        .filter(v => v.trim() !== "")
-        .reduce((sum, num) => sum + Number(num), 0);
+
+// เลข INV
+
+let invNumber = 1;
+
+
+function generateINV(){
+
+    return "INV-" +
+    String(invNumber).padStart(5,"0");
+
 }
+
+
+
+function today(){
+
+    let d = new Date();
+
+    return d.toLocaleDateString("th-TH");
+
+}
+
+
+
+document.getElementById("inv").value = generateINV();
+document.getElementById("date").value = today();
+
+
+document.getElementById("p_inv").innerText =
+document.getElementById("inv").value;
+
+
+document.getElementById("p_date").innerText =
+document.getElementById("date").value;
+
+
+
+
+function calculateFormula(value){
+
+return value
+.split(/[+*xX]/)
+.filter(v=>v.trim()!="")
+.reduce((sum,num)=>sum+Number(num),0);
+
+}
+
+
+
+
 
 function addRow(){
 
-    count++;
-
-    let table = document.getElementById("items");
-    let row = table.insertRow();
-
-    row.innerHTML = `
-    <td>${count}</td>
-
-    <td>
-        <input class="item"
-        onkeydown="goFormula(event,this)">
-    </td>
-
-    <td>
-        <input class="formula"
-        oninput="updateTotal()"
-        onkeydown="enterNext(event,this)">
-    </td>
-
-    <td class="result">0</td>
-    `;
-}
-
-function updateTotal(){
-
-    let total = 0;
-
-    document.querySelectorAll(".formula").forEach(input=>{
-
-        let value = input.value;
-
-        let result = calculateFormula(value);
-
-        input.closest("tr")
-        .querySelector(".result")
-        .innerText = result;
-
-        total += result;
-    });
-
-    document.getElementById("total").innerText = total;
-}
+count++;
 
 
-function enterNext(event,input){
+let table=document.getElementById("items");
 
-    if(event.key === "Enter"){
+let row=table.insertRow();
 
-        event.preventDefault();
 
-        addRow();
 
-        document
-        .querySelector("#items tr:last-child .item")
-        .focus();
+row.innerHTML=`
 
-    }
+<td>${count}</td>
+
+
+<td>
+<input class="item"
+oninput="updatePreview()"
+onkeydown="goFormula(event,this)">
+</td>
+
+
+
+<td>
+
+<input class="formula"
+
+oninput="updatePreview()"
+
+onkeydown="enterNext(event)">
+
+</td>
+
+
+
+<td class="result">
+0
+</td>
+
+`;
+
+
 
 }
+
+
+
+
+
+function updatePreview(){
+
+
+let total=0;
+
+
+let preview =
+document.getElementById("previewTable");
+
+
+// ลบรายการเดิม
+
+while(preview.rows.length>1){
+
+preview.deleteRow(1);
+
+}
+
+
+
+document.querySelectorAll(".formula")
+.forEach((input,index)=>{
+
+
+let result =
+calculateFormula(input.value);
+
+
+
+input.closest("tr")
+.querySelector(".result")
+.innerText=result;
+
+
+
+total+=result;
+
+
+
+let item =
+input.closest("tr")
+.querySelector(".item")
+.value;
+
+
+
+let row =
+preview.insertRow();
+
+
+
+row.innerHTML=`
+
+<td>${index+1}</td>
+
+<td>${item}</td>
+
+<td>${input.value}</td>
+
+<td>${result.toFixed(2)}</td>
+
+`;
+
+
+
+});
+
+
+
+document.getElementById("total")
+.innerText=total.toFixed(2);
+
+
+document.getElementById("p_total")
+.innerText=total.toFixed(2);
+
+
+
+document.getElementById("p_customer")
+.innerText=
+document.getElementById("customer").value;
+
+
+}
+
+
+
+
+
 function goFormula(event,input){
 
-    if(event.key === "Enter"){
+if(event.key==="Enter"){
 
-        event.preventDefault();
+event.preventDefault();
 
-        input
-        .parentElement
-        .nextElementSibling
-        .querySelector("input")
-        .focus();
 
-    }
+input
+.parentElement
+.nextElementSibling
+.querySelector("input")
+.focus();
+
 
 }
+
+}
+
+
+
+
+
+function enterNext(event){
+
+
+if(event.key==="Enter"){
+
+
+event.preventDefault();
+
+
+addRow();
+
+
+document
+.querySelector("#items tr:last-child .item")
+.focus();
+
+
+
+}
+
+
+}
+
+
+
+
+
 addRow();
