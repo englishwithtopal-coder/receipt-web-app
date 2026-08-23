@@ -238,15 +238,36 @@ document
 
 function saveBill(){
 
+let items = [];
+
+document.querySelectorAll("#items tr").forEach((row,index)=>{
+
+    if(index===0) return;
+
+    items.push({
+
+        name: row.querySelector(".item").value,
+
+        formula: row.querySelector(".formula").value,
+
+        total: row.querySelector(".result").innerText
+
+    });
+
+});
+
+
 let bill = {
 
-inv: document.getElementById("inv").value,
+    inv: document.getElementById("inv").value,
 
-date: document.getElementById("date").value,
+    date: document.getElementById("date").value,
 
-customer: document.getElementById("customer").value,
+    customer: document.getElementById("customer").value,
 
-total: document.getElementById("total").innerText
+    items: items,
+
+    total: document.getElementById("total").innerText
 
 };
 
