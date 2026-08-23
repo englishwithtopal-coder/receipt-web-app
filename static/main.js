@@ -21,7 +21,12 @@ function addRow(){
         oninput="updateTotal()"
         onkeydown="enterNext(event)">
     </td>
-    <td class="result">0</td>
+    <tr>
+<th>ลำดับ</th>
+<th>รายการ</th>
+<th>วิธีคำนวณ</th>
+<th>รวม</th>
+</tr>
     `;
 }
 
